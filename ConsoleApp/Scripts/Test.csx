@@ -1,16 +1,15 @@
+var dariusz = new Person();
+var age = dariusz.Age;
+Console.WriteLine(age);
+
 public class Person
 {
-    private int _age { get; set; } = 10;
-    public int Age => _age;
+    private int AgeValue { get; set; } = 10;
+    public int Age = AgeValue;
+
     public Person() { }
     public Person(int age)
     {
-        _age = age;
+        AgeValue = age;
     }
 }
-
-var Dariusz = new Person();
-
-var age = Dariusz.Age;
-
-Console.WriteLine(age);
