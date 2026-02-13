@@ -1,6 +1,7 @@
 ﻿using ConsoleApp.Decorators;
 using ConsoleApp.Factories;
 using ConsoleApp.Interfaces;
+using static ConsoleApp.Miscs.Calculator;
 using ConsoleApp.Models;
 
 // Logger logger = Logger.GetInstance();
@@ -69,3 +70,7 @@ var p3 = new Pizza.PizzaBuilder()
 Console.WriteLine(p1.Serve());
 Console.WriteLine(p2.Build().Serve());
 Console.WriteLine(p3.Serve());
+
+Console.WriteLine(Sum(2.5, 5));
+Console.WriteLine(Multiply(2, 5));
+Console.WriteLine(Divide(2, 0));
