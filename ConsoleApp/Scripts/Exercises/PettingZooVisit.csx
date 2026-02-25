@@ -37,6 +37,20 @@ void RandomizeAnimals()
     }
 }
 
+void string[,] AssignGroup(int groups =  6)
+{
+    string[,] result = new string[groups, pettingZoo.Length / groups];
+
+    for (int i = 0; i < groups; i++)
+    {
+        for (int j = 0; j < result.GetLength(1); j++)
+        {
+
+        }
+    }
+    return result;
+}
+
 foreach (string animal in pettingZoo)
 {
     Console.WriteLine(animal);
