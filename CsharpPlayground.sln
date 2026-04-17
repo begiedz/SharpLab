@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoPizza", "ContosoPizz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BegiedzDev", "BegiedzDev\BegiedzDev.csproj", "{55D81FDB-3E70-4569-87AC-3982BCC5E5D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMovie", "MvcMovie\MvcMovie.csproj", "{69888E5F-2B6B-415F-BB8B-9DF918044640}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{CD9D3BE2-57AC-4B1A-A4FF-2D77CDDB3E09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +29,15 @@ Global
 		{55D81FDB-3E70-4569-87AC-3982BCC5E5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55D81FDB-3E70-4569-87AC-3982BCC5E5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55D81FDB-3E70-4569-87AC-3982BCC5E5D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69888E5F-2B6B-415F-BB8B-9DF918044640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69888E5F-2B6B-415F-BB8B-9DF918044640}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69888E5F-2B6B-415F-BB8B-9DF918044640}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69888E5F-2B6B-415F-BB8B-9DF918044640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD9D3BE2-57AC-4B1A-A4FF-2D77CDDB3E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD9D3BE2-57AC-4B1A-A4FF-2D77CDDB3E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD9D3BE2-57AC-4B1A-A4FF-2D77CDDB3E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD9D3BE2-57AC-4B1A-A4FF-2D77CDDB3E09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC784020-51E4-4DC6-9C40-D1B23D8432CF}
 	EndGlobalSection
 EndGlobal
