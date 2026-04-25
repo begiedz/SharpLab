@@ -32,8 +32,11 @@ while (!shouldExit)
     if (TerminalResized())
         endGame("Console was resized.");
 
-    Move(true);
-    consumedFood();
+    if (isPlayerBadState())
+        continue;
+
+    Move(true, isPlayerGoodState());
+    ConsumedFood();
 }
 // === Game ===
 
@@ -73,7 +76,7 @@ void FreezePlayer()
     player = states[0];
 }
 
-bool consumedFood()
+bool ConsumedFood()
 {
     bool overlappedX = playerX == foodX;
     bool overlappedY = playerY == foodY;
@@ -88,8 +91,26 @@ bool consumedFood()
     return false;
 }
 
+bool isPlayerBadState()
+{
+    if (player == states[2])
+    {
+        FreezePlayer();
+        return true;
+    }
+    return false;
+}
+
+bool isPlayerGoodState()
+{
+    if (player == states[1])
+        return true;
+ 
+    return false;
+}
+
 // Reads directional input from the Console and moves the player
-void Move(bool terminateOnNonDirectionalInput = false) 
+void Move(bool? terminateOnNonDirectionalInput = false, bool? increasedMovementSpeed = false) 
 {
     int lastX = playerX;
     int lastY = playerY;
@@ -103,9 +124,19 @@ void Move(bool terminateOnNonDirectionalInput = false)
             playerY++; 
             break;
 		case ConsoleKey.LeftArrow:  
+            if (increasedMovementSpeed == true)
+            {
+                playerX -= 3;
+                break;
+            }
             playerX--; 
             break;
-		case ConsoleKey.RightArrow: 
+		case ConsoleKey.RightArrow:
+            if (increasedMovementSpeed == true)
+            {
+                playerX += 3;
+                break;
+            }
             playerX++; 
             break;
 		case ConsoleKey.Escape:     
