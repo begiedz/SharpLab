@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="src/BegiedzDev/BegiedzDev.csproj" />
+  <Project Path="src/Calculator/Calculator.csproj" />
+  <Project Path="src/ConsoleApp/ConsoleApp.csproj" />
+  <Project Path="src/ContosoPizza/ContosoPizza.csproj" />
+  <Project Path="src/MiniGame/MiniGame.csproj" />
+  <Project Path="src/TaskManagerApi/TaskManagerApi.csproj" />
+</Solution>
+

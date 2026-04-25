@@ -1,1 +1,3 @@
-# Csharp Playground
+# SharpLab
+
+A playground for .NET projects.
