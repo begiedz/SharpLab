@@ -24,8 +24,7 @@ int food = 0;
 
 // === Game ===
 InitializeGame();
-int x = 0;
-if (x == 1) { Console.WriteLine("test"); }
+
 while (!shouldExit)
 {
     if (TerminalResized())
