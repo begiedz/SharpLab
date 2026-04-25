@@ -33,6 +33,7 @@ while (!shouldExit)
         endGame("Console was resized.");
 
     Move(true);
+    consumedFood();
 }
 // === Game ===
 
@@ -70,6 +71,21 @@ void FreezePlayer()
 {
     System.Threading.Thread.Sleep(1000);
     player = states[0];
+}
+
+bool consumedFood()
+{
+    bool overlappedX = playerX == foodX;
+    bool overlappedY = playerY == foodY;
+
+    if ( overlappedX && overlappedY )
+    {
+        ChangePlayer();
+        ShowFood();
+
+        return true;
+    }
+    return false;
 }
 
 // Reads directional input from the Console and moves the player
