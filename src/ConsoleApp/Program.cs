@@ -1,180 +1,45 @@
-﻿using ConsoleApp.Decorators;
-using ConsoleApp.Factories;
-using ConsoleApp.Interfaces;
-using static ConsoleApp.Miscs.Calculator;
-using ConsoleApp.Models;
+﻿string? readResult;
+int startNumber = 0;
+bool goodEntry = false;
 
-// Logger logger = Logger.GetInstance();
+int[] numbers = { 1, 2, 3, 4, 5 };
 
-// ICarFactory factory = new CarFactory();
-// // CarFactory factory = new();
-
-// logger.Log("Hello!");
-
-// ICar car1 = factory.CreateCar("sedan");
-// car1.Drive();
-
-// ICar car2 = factory.CreateCar("suv");
-// car2.Drive();
-
-// ICoffee coffee = new SimpleCoffee();
-// Console.WriteLine(coffee.GetDescription());
-// Console.WriteLine(coffee.GetCost());
-
-// coffee = new MilkDecorator(coffee);
-// Console.WriteLine(coffee.GetDescription());
-// Console.WriteLine(coffee.GetCost());
-
-// coffee = new SugarDecorator(coffee);
-// Console.WriteLine(coffee.GetDescription());
-// Console.WriteLine(coffee.GetCost());
-
-// // Dictionary (HashMap, frequency map)
-// var dict = new Dictionary<string, int>();
-// dict["apple"] = 3;
-// dict["banana"] = 5;
-
-// foreach (var keyValue in dict)
-//     Console.WriteLine($"{keyValue.Key} -> {keyValue.Value}");
-
-// // ===
-// string[] items = { "apple", "banana", "apple", "pear", "banana", "banana" };
-
-// var counts = new Dictionary<string, int>();
-// foreach (var item in items)
-//     counts[item] = counts.TryGetValue(item, out var count) ? count + 1 : 1;
-
-// Console.WriteLine("Counts:");
-// foreach (var pair in counts)
-//     Console.WriteLine($"{pair.Key}: {pair.Value}");
-
-// // HashSet
-// var set = new HashSet<int>();
-// set.Add(10);
-// set.Add(20);
-
-// foreach (var entry in set)
-//     Console.WriteLine(entry);
-
-// var p1 = new Pizza("Quatro Formaggi", 45, "Sour Creme", "4 Cheese");
-// var p2 = new Pizza.PizzaBuilder();
-// var p3 = new Pizza.PizzaBuilder()
-//     .WithName("Diabolo")
-//     .WithSize(35)
-//     .WithSauce("Garlic")
-//     .WithTopping("Pepperoni")
-//     .Build();
-
-
-
-// Console.WriteLine(p1.Serve());
-// Console.WriteLine(p2.Build().Serve());
-// Console.WriteLine(p3.Serve());
-
-// Console.WriteLine(Sum(2.5, 5));
-// Console.WriteLine(Multiply(2, 5));
-// Console.WriteLine(Divide(2, 0));
-
-/*
-This code uses a names array and corresponding methods to display
-greeting messages
-*/
-
-// string[] names = new string[] { "Sophia", "Andrew", "AllGreetings" };
-
-// string messageText = "";
-
-// foreach (string name in names)
-// {
-//     if (name == "Sophia")
-//         messageText = SophiaMessage();
-//     else if (name == "Andrew")
-//         messageText = AndrewMessage();
-//     else if (name == "AllGreetings")
-//         messageText = SophiaMessage() + "\n\r" + AndrewMessage();
-
-//     Console.WriteLine(messageText + "\n\r");
-// }
-
-// bool pauseCode = true;
-// while (pauseCode == true) ;
-
-// static string SophiaMessage()
-// {
-//     return "Hello, my name is Sophia.";
-// }
-
-// static string AndrewMessage()
-// {
-//     return "Hi, my name is Andrew. Good to meet you.";
-// }
-
-int productCount = 2000;
-string[,] products = new string[productCount, 2];
-
-LoadProducts(products, productCount);
-
-for (int i = 0; i < productCount; i++)
+// Display the array to the console.
+Console.Clear();
+Console.Write("\n\rThe 'numbers' array contains: { ");
+foreach (int number in numbers)
 {
-    string result;
-    result = Process1(products, i);
+    Console.Write($"{number} ");
+}
 
-    if (result != "obsolete")
+// To calculate a sum of array elements,
+//  prompt the user for the starting element number.
+Console.WriteLine($"}}\n\r\n\rTo sum values 'n' through 5, enter a value for 'n':");
+while (goodEntry == false)
+{
+    readResult = Console.ReadLine();
+    goodEntry = int.TryParse(readResult, out startNumber);
+
+    if (startNumber > 5)
     {
-        result = Process2(products, i);
+        goodEntry = false;
+        Console.WriteLine("\n\rEnter an integer value between 1 and 5");
     }
 }
 
-bool pauseCode = true;
-while (pauseCode == true) ;
+// Display the sum and then pause.
+Console.WriteLine($"\n\rThe sum of numbers {startNumber} through {numbers.Length} is: {SumValues(numbers, startNumber - 1)}");
 
-static void LoadProducts(string[,] products, int productCount)
+Console.WriteLine("press Enter to exit");
+readResult = Console.ReadLine();
+
+// This method returns the sum of elements n through 5
+static int SumValues(int[] numbers, int n)
 {
-    Random rand = new Random();
-
-    for (int i = 0; i < productCount; i++)
+    int sum = 0;
+    for (int i = n; i < numbers.Length; i++)
     {
-        int num1 = rand.Next(1, 10000) + 10000;
-        int num2 = rand.Next(1, 101);
-
-        string prodID = num1.ToString();
-
-        if (num2 < 91)
-        {
-            products[i, 1] = "existing";
-        }
-        else if (num2 == 91)
-        {
-            products[i, 1] = "new";
-            prodID = prodID + "-n";
-        }
-        else
-        {
-            products[i, 1] = "obsolete";
-            prodID = prodID + "-0";
-        }
-
-        products[i, 0] = prodID;
+        sum += numbers[i];
     }
-}
-
-static string Process1(string[,] products, int item)
-{
-    Console.WriteLine($"Process1 message - working on {products[item, 1]} product");
-
-    return products[item, 1];
-}
-
-static string Process2(string[,] products, int item)
-{
-    Console.WriteLine($"Process2 message - working on product ID #: {products[item, 0]}");
-    if (products[item, 1] == "new")
-        Process3(products, item);
-
-    return "continue";
-}
-
-static void Process3(string[,] products, int item)
-{
-    Console.WriteLine($"Process3 message - processing product information for 'new' product");
+    return sum;
 }
