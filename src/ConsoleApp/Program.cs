@@ -56,21 +56,55 @@ using ConsoleApp.Models;
 // foreach (var entry in set)
 //     Console.WriteLine(entry);
 
-var p1 = new Pizza("Quatro Formaggi", 45, "Sour Creme", "4 Cheese");
-var p2 = new Pizza.PizzaBuilder();
-var p3 = new Pizza.PizzaBuilder()
-    .WithName("Diabolo")
-    .WithSize(35)
-    .WithSauce("Garlic")
-    .WithTopping("Pepperoni")
-    .Build();
+// var p1 = new Pizza("Quatro Formaggi", 45, "Sour Creme", "4 Cheese");
+// var p2 = new Pizza.PizzaBuilder();
+// var p3 = new Pizza.PizzaBuilder()
+//     .WithName("Diabolo")
+//     .WithSize(35)
+//     .WithSauce("Garlic")
+//     .WithTopping("Pepperoni")
+//     .Build();
 
 
 
-Console.WriteLine(p1.Serve());
-Console.WriteLine(p2.Build().Serve());
-Console.WriteLine(p3.Serve());
+// Console.WriteLine(p1.Serve());
+// Console.WriteLine(p2.Build().Serve());
+// Console.WriteLine(p3.Serve());
 
-Console.WriteLine(Sum(2.5, 5));
-Console.WriteLine(Multiply(2, 5));
-Console.WriteLine(Divide(2, 0));
+// Console.WriteLine(Sum(2.5, 5));
+// Console.WriteLine(Multiply(2, 5));
+// Console.WriteLine(Divide(2, 0));
+
+/*
+This code uses a names array and corresponding methods to display
+greeting messages
+*/
+
+string[] names = new string[] { "Sophia", "Andrew", "AllGreetings" };
+
+string messageText = "";
+
+foreach (string name in names)
+{
+    if (name == "Sophia")
+        messageText = SophiaMessage();
+    else if (name == "Andrew")
+        messageText = AndrewMessage();
+    else if (name == "AllGreetings")
+        messageText = SophiaMessage() + "\n\r" + AndrewMessage();
+
+    Console.WriteLine(messageText + "\n\r");
+}
+
+bool pauseCode = true;
+while (pauseCode == true) ;
+
+static string SophiaMessage()
+{
+    return "Hello, my name is Sophia.";
+}
+
+static string AndrewMessage()
+{
+    return "Hi, my name is Andrew. Good to meet you.";
+}
