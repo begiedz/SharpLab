@@ -1,48 +1,69 @@
-﻿try
-{
-    int num1 = int.MaxValue;
-    int num2 = int.MaxValue;
-    int result = checked(num1 + num2);
-    Console.WriteLine("Result: " + result);
-}
-catch (OverflowException ex)
-{
-    Console.WriteLine("Error: The number is too large to be represented as an integer." + ex.Message);
-}
+﻿// Prompt the user for the lower and upper bounds
+Console.Write("Enter the lower bound: ");
+int lowerBound = int.Parse(Console.ReadLine());
 
+Console.Write("Enter the upper bound: ");
+int upperBound = int.Parse(Console.ReadLine());
 
-try
-{
-    string str = null;
-    int length = str.Length;
-    Console.WriteLine("String Length: " + length);
-}
-catch (NullReferenceException ex)
-{
-    Console.WriteLine("Error: The reference is null." + ex.Message);
-}
+decimal averageValue = 0;
 
-try
-{
-    int[] numbers = new int[5];
-    numbers[5] = 10;
-    Console.WriteLine("Number at index 5: " + numbers[5]);
-}
-catch (IndexOutOfRangeException ex)
-{
-    Console.WriteLine("Error: Index out of range." + ex.Message);
-}
-try
-{
+bool exit = false;
 
-    int num3 = 10;
-    int num4 = 0;
-    int result2 = num3 / num4;
-    Console.WriteLine("Result: " + result2);
-}
-catch (DivideByZeroException ex)
+do
 {
-    Console.WriteLine("Error: Cannot divide by zero." + ex.Message);
-}
+    try
+    {
+        // Calculate the sum of the even numbers between the bounds
+        averageValue = AverageOfEvenNumbers(lowerBound, upperBound);
 
-Console.WriteLine("Exiting program.");
+        // Display the result to the user
+        Console.WriteLine($"The average of even numbers between {lowerBound} and {upperBound} is {averageValue}.");
+
+        exit = true;
+    }
+    catch (ArgumentOutOfRangeException ex)
+    {
+        Console.WriteLine("An error has occurred.");
+        Console.WriteLine(ex.Message);
+        Console.WriteLine($"The upper bound must be greater than {lowerBound}");
+        Console.Write($"Enter a new upper bound (or enter Exit to quit): ");
+        string? userResponse = Console.ReadLine();
+        if (userResponse.ToLower().Contains("exit"))
+        {
+            exit = true;
+        }
+        else
+        {
+            exit = false;
+            upperBound = int.Parse(userResponse);
+        }
+    }
+} while (exit == false);
+
+// Wait for user input
+Console.ReadLine();
+
+static decimal AverageOfEvenNumbers(int lowerBound, int upperBound)
+{
+    if (lowerBound >= upperBound)
+    {
+        throw new ArgumentOutOfRangeException(nameof(upperBound), "ArgumentOutOfRangeException: upper bound must be greater than lower bound.");
+    }
+
+    int sum = 0;
+    int count = 0;
+    decimal average = 0;
+
+    for (int i = lowerBound; i <= upperBound; i++)
+    {
+        if (i % 2 == 0)
+        {
+            sum += i;
+            count++;
+        }
+    }
+
+    average = (decimal)sum / count;
+
+    return average;
+}
